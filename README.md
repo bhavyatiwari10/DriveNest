@@ -181,4 +181,18 @@ Potential next steps include:
 - REST API for a mobile client
 - Automated CI/CD with GitHub Actions
 
+## 📸 Screenshots
+
+### 🏠 Homepage
+
+![DriveNest Homepage](screenshots/Homepage.png)
+
+### 🚗 Vehicle Fleet
+
+![DriveNest Vehicle Fleet](screenshots/Vehicle_Fleet.png)
+
+### 👨‍💼 Admin Dashboard
+
+![DriveNest Admin Dashboard](screenshots/Admin_Dashboard.png)
+
 
