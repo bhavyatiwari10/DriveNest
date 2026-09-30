@@ -1,183 +1,116 @@
-# DriveNest — Smart Car Rental Platform
+# 🚗 DriveNest - Django Car Rental System
 
-DriveNest is a portfolio-ready Django car rental platform rebuilt from the original CarZest concept. It combines a responsive frontend with account-based reservations, server-side pricing, fleet discovery and practical booking management.
+DriveNest is a Django-based car rental web application originally built as a collaborative hackathon project and later shared on a teammate's GitHub repository. This repository is a refreshed and enhanced version of that project, retaining the original concept while improving the backend, booking flow, security configuration, frontend experience, database-driven vehicle management, testing, and deployment readiness.
 
-## What makes this version stronger
+> **Project Note:** This is a student/portfolio project designed to demonstrate full-stack web development skills. It is not intended to operate as a production rental marketplace. Real-world payment processing, live fleet tracking, advanced availability synchronization, and commercial fleet operations are outside the current scope.
 
-- Rebranded product experience: **DriveNest**
-- Modern responsive landing page and navigation
-- Database-driven fleet with category, seats, transmission, fuel type and availability metadata
-- Fleet search, filtering and sorting
-- Account dashboard with booking statistics and recent activity
-- Booking history with unique references such as `DN-00001`
-- Booking cancellation workflow
-- Server-side rental total calculation
-- Server-side date-overlap protection to prevent conflicting active reservations
-- Pickup and return dates stored separately for cleaner booking logic
-- Improved Django admin for fleet and booking operations
-- Automated tests for authentication, filtering, pricing, date calculations, conflict detection and cancellation
-- Environment-based Django secret key and host configuration
+## 🌐 Live Demo
 
-> **Project scope:** This is a student/portfolio project. It does not process real payments or operate a live commercial fleet.
+**DriveNest Live Application:**  
+https://drivenest-vpaq.onrender.com/
 
-## Core features
+**GitHub Repository:**  
+https://github.com/bhavyatiwari10/DriveNest
 
-### Customer side
-- Registration and login
-- Responsive homepage
-- Fleet search and filters
-- Vehicle detail metadata
-- Booking form with live price preview
-- Date validation
-- Booking conflict validation
-- Personal dashboard
-- Booking history
-- Booking cancellation
-- Contact form
+---
 
-### Admin side
-- Add/edit/remove vehicles
-- Mark vehicles available/unavailable
-- Filter fleet by category, fuel and transmission
-- Search and manage bookings
-- Update booking status
-- Review customer contact messages
+## ✨ What Changed in the Refreshed Version
 
-## Tech stack
+The original application was significantly cleaned up and enhanced for portfolio use.
 
-- **Backend:** Python, Django 5.2
-- **Frontend:** HTML, CSS, Bootstrap 5, Bootstrap Icons, JavaScript
-- **Database:** SQLite for local development
-- **Image handling:** Pillow
-- **Testing:** Django TestCase
+- Modern responsive UI with a redesigned landing page
+- Improved fleet cards and vehicle presentation
+- Database-driven vehicle listings instead of hard-coded vehicle choices
+- Login-protected fleet and booking pages
+- User-specific **My Bookings** history
+- User dashboard with booking statistics
+- Server-side rental-price calculation
+- Booking duration and date validation
+- Booking conflict prevention for overlapping reservations
+- Booking cancellation functionality
+- Django admin improvements for vehicles, bookings and contact messages
+- Environment-based Django secret key configuration
+- Environment-based allowed-host configuration
+- Production-ready static-file handling using WhiteNoise
+- Clean `.gitignore` to prevent local and sensitive files from being committed
+- Demo vehicle fixture for quick setup
+- Automated tests covering authentication, vehicle access and booking calculations
+- GitHub-based version control
+- Render deployment configuration
 
-## Project structure
+---
+
+# 🚘 Features
+
+## 👤 User Authentication
+
+DriveNest uses Django's authentication system to provide protected user functionality.
+
+Users can:
+
+- Register an account
+- Log in
+- Log out
+- Access protected pages
+- Make vehicle bookings
+- View their own booking history
+- Cancel eligible bookings
+
+---
+
+## 🚗 Vehicle Fleet
+
+Users can browse a database-driven fleet of rental vehicles.
+
+Each vehicle can contain:
+
+- Vehicle ID
+- Vehicle name
+- Description
+- Daily rental price
+- Vehicle image
+- Number of seats
+- Category
+- Transmission
+- Fuel type
+- Availability status
+
+Vehicle information is retrieved dynamically from the database rather than being hard-coded into the frontend.
+
+---
+
+## 🔎 Fleet Search, Filtering & Sorting
+
+Users can discover vehicles using fleet search and filtering functionality.
+
+Supported options include:
+
+- Vehicle name
+- Vehicle category
+- Fuel type
+- Transmission
+- Price
+- Availability
+
+Vehicles can also be sorted according to rental price.
+
+---
+
+## 📅 Vehicle Booking
+
+Authenticated users can select a vehicle and choose:
+
+- Pickup date
+- Return date
+
+The system automatically calculates the rental duration and total rental cost.
+
+Example:
 
 ```text
-DriveNest/
-├── MyApp/
-│   ├── migrations/
-│   ├── admin.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── vehicles/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-├── static/
-├── templates/
-├── fixtures/
-├── .env.example
-├── .gitignore
-├── manage.py
-├── requirements.txt
-└── README.md
-```
+Daily Rental Price = ₹2,000
+Rental Duration = 3 Days
 
-## Run locally
-
-### 1. Create a virtual environment
-
-Windows:
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-macOS/Linux:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Apply migrations
-
-```bash
-python manage.py migrate
-```
-
-### 4. Load the demo fleet
-
-```bash
-python manage.py loaddata fixtures/cars.json
-```
-
-### 5. Create an admin user
-
-```bash
-python manage.py createsuperuser
-```
-
-### 6. Start the server
-
-```bash
-python manage.py runserver
-```
-
-Open `http://127.0.0.1:8000/`.
-
-Admin: `http://127.0.0.1:8000/admin/`
-
-## Test suite
-
-```bash
-python manage.py test
-```
-
-## Portfolio talking points
-
-If you present DriveNest in an interview, the strongest technical points are:
-
-1. **Server-side pricing:** the client-side total is only a preview; the backend calculates the final amount from the database price.
-2. **Booking conflict detection:** active reservations are checked for overlapping pickup/return windows before a booking is created.
-3. **Authentication and ownership:** users can only access and cancel their own bookings.
-4. **Query-driven fleet discovery:** Django ORM filters the fleet by search text, category, transmission, fuel and price ordering.
-5. **Admin workflow:** fleet availability and booking statuses can be managed without editing code.
-6. **Automated tests:** core booking rules are covered by Django TestCase tests.
-
-## Future production upgrades
-
-- PostgreSQL
-- Payment gateway integration
-- Email/SMS confirmations
-- Redis/Celery for background jobs
-- REST API / mobile client
-- Docker + CI/CD
-- Cloud object storage for vehicle images
-- Role-based staff dashboard
-- Real-time fleet availability calendar
-
-
-## 🛠️ Tech Stack
-
-Python
-Django
-SQLite
-HTML
-CSS
-JavaScript
-
-## 📸 Screenshots
-
-## ⚙️ Installation
-
-## 🚀 Running Locally
-
-## 📂 Project Structure
-
-## 🔮 Future Improvements
-
-## Attribution
-
-The original project was a student/hackathon-style Django car rental application. Before publishing publicly, retain any required attribution or license information from the source repository.
+Total Rental Cost
+= ₹2,000 × 3
+= ₹6,000
