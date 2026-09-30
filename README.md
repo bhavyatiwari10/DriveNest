@@ -158,6 +158,25 @@ If you present DriveNest in an interview, the strongest technical points are:
 - Role-based staff dashboard
 - Real-time fleet availability calendar
 
+
+## 🛠️ Tech Stack
+Python
+Django
+SQLite
+HTML
+CSS
+JavaScript
+
+## 📸 Screenshots
+
+## ⚙️ Installation
+
+## 🚀 Running Locally
+
+## 📂 Project Structure
+
+## 🔮 Future Improvements
+
 ## Attribution
 
 The original project was a student/hackathon-style Django car rental application. Before publishing publicly, retain any required attribution or license information from the source repository.
