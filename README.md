@@ -147,3 +147,24 @@ Rental Duration = 3 Days
 Total Rental Cost
 = ₹2,000 × 3
 = ₹6,000
+
+  ---
+
+## Original Project Context & Credits
+
+DriveNest was originally a collaborative car rental project built by **me and my friend Bharat**. This repository is my enhanced and reworked version of that project. The original concept has been retained, and I worked on the following improvements:
+
+- Rebranded and redesigned the project as **DriveNest**
+- Replaced static vehicle selections with database-driven fleet listings
+- Added vehicle search, filtering, sorting and detailed vehicle information
+- Added user authentication and a dedicated **My Bookings** dashboard
+- Added booking references, pickup/return dates and booking cancellation
+- Implemented server-side rental-price calculation and booking validation
+- Added date-overlap protection to prevent conflicting vehicle bookings
+- Improved Django Admin for managing vehicles and bookings
+- Added automated tests for authentication, vehicle access and booking logic
+- Rebuilt and improved the frontend for a cleaner, responsive user experience
+- Added environment-based configuration for Django settings and allowed hosts
+- Added production static-file handling using **WhiteNoise**
+- Added database fixtures for quick fleet setup and deployment
+- Deployed the application online using **Render**
