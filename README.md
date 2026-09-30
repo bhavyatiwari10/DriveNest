@@ -40,6 +40,39 @@ The original application was significantly cleaned up and enhanced for portfolio
 
 ---
 
+## Tech Stack
+
+- **Backend:** Python, Django
+- **Frontend:** HTML, CSS, Bootstrap 5, Bootstrap Icons, JavaScript
+- **Database:** SQLite for local development
+- **Image handling:** Pillow
+- **Testing:** Django TestCase
+
+## Project Structure
+
+```text
+Car-Rental-System/
+├── MyApp/
+│   ├── migrations/
+│   ├── admin.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── vehicles/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+├── static/
+├── templates/
+├── .env.example
+├── .gitignore
+├── manage.py
+├── requirements.txt
+└── README.md
+```
+
 # 🚘 Features
 
 ## 👤 User Authentication
