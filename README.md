@@ -147,13 +147,12 @@ Rental Duration = 3 Days
 Total Rental Cost
 = ₹2,000 × 3
 = ₹6,000
+```
 
-  ---
-
+## License
 ## Original Project Context & Credits
 
 DriveNest was originally a collaborative car rental project built by **me and my friend Bharat**. This repository is my enhanced and reworked version of that project. The original concept has been retained, and I worked on the following improvements:
-
 - Rebranded and redesigned the project as **DriveNest**
 - Replaced static vehicle selections with database-driven fleet listings
 - Added vehicle search, filtering, sorting and detailed vehicle information
@@ -168,3 +167,18 @@ DriveNest was originally a collaborative car rental project built by **me and my
 - Added production static-file handling using **WhiteNoise**
 - Added database fixtures for quick fleet setup and deployment
 - Deployed the application online using **Render**
+
+## Future Improvements
+
+Potential next steps include:
+
+- Real-time vehicle availability
+- Payment gateway integration
+- Booking cancellation and refund workflows
+- Email/SMS booking confirmations
+- PostgreSQL for production deployment
+- Docker-based deployment
+- REST API for a mobile client
+- Automated CI/CD with GitHub Actions
+
+
