@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Book a Vehicle{% endblock %}
+{% block body %}
+<section class="page-hero compact">
+  <div class="container"><span class="eyebrow">RESERVATION</span><h1>Book your vehicle.</h1><p>Everything needed for the rental is in one form. The final price is calculated from the selected vehicle and rental duration.</p></div>
+</section>
+<section class="section-pad pt-4">
+  <div class="container">
+    <form method="post" action="{% url 'order' %}" id="bookingForm">
+      {% csrf_token %}
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="form-card">
+            <div class="form-section"><div class="step-number">01</div><div><h2>Personal details</h2><p>Who is making the reservation?</p></div></div>
+            <div class="row g-3">
+              <div class="col-md-6"><label for="billname">Full name *</label><input class="form-control" id="billname" name="billname" value="{{ request.user.first_name }}" required></div>
+              <div class="col-md-6"><label for="billemail">Email *</label><input class="form-control" id="billemail" name="billemail" type="email" value="{{ request.user.email }}" required></div>
+              <div class="col-md-6"><label for="billphone">Phone *</label><input class="form-control" id="billphone" name="billphone" type="tel" pattern="[0-9+ -]{8,15}" autocomplete="tel" required></div>
+              <div class="col-md-6"><label for="billcity">City *</label><input class="form-control" id="billcity" name="billcity" required></div>
+              <div class="col-12"><label for="billaddress">Address *</label><input class="form-control" id="billaddress" name="billaddress" required></div>
+              <div class="col-md-6"><label for="state">State</label><select class="form-select" id="state" name="state"><option value="">Choose...</option><option>Uttar Pradesh</option><option>Delhi</option><option>Maharashtra</option><option>Karnataka</option><option>Gujarat</option><option>Tamil Nadu</option><option>Kerala</option><option>Other</option></select></div>
+              <div class="col-md-6"><label for="pincode">PIN code</label><input class="form-control" id="pincode" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6"></div>
+            </div>
+          </div>
+
+          <div class="form-card mt-4">
+            <div class="form-section"><div class="step-number">02</div><div><h2>Trip details</h2><p>Tell us about the rental.</p></div></div>
+            <div class="row g-3">
+              <div class="col-md-6"><label for="cars11">Vehicle *</label><select class="form-select" id="cars11" name="cars11" required><option value="" disabled {% if not selected_car %}selected{% endif %}>Choose a vehicle</option>{% for car in cars %}<option value="{{ car.car_name }}" data-price="{{ car.price }}" {% if selected_car == car.car_name %}selected{% endif %}>{{ car.car_name }} — ₹{{ car.price }}/day</option>{% endfor %}</select></div>
+              <div class="col-md-6"><label for="color1">Preferred color</label><select class="form-select" id="color1" name="color1"><option value="">No preference</option><option>Black</option><option>Red</option><option>White</option><option>Silver</option><option>Blue</option></select></div>
+              <div class="col-md-6"><label for="dayss">Rental days *</label><input class="form-control" id="dayss" name="dayss" type="number" min="1" max="30" value="1" required></div>
+              <div class="col-md-6"><label for="date">Pickup date *</label><input class="form-control" id="date" name="date" type="date" required></div>
+              <div class="col-md-6"><label for="fl">Pickup location *</label><input class="form-control" id="fl" name="fl" placeholder="e.g. Meerut Railway Station" required></div>
+              <div class="col-md-6"><label for="tl">Drop-off location *</label><input class="form-control" id="tl" name="tl" placeholder="e.g. Delhi Airport" required></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <aside class="summary-card sticky-lg-top">
+            <span class="eyebrow">BOOKING SUMMARY</span>
+            <h2 id="summaryCar">Select a vehicle</h2>
+            <div class="summary-line"><span>Daily rate</span><strong id="dailyRate">₹0</strong></div>
+            <div class="summary-line"><span>Rental days</span><strong id="summaryDays">1</strong></div>
+            <hr>
+            <div class="summary-total"><span>Total</span><strong id="totalRent">₹0</strong></div>
+            <p class="small text-secondary mt-3"><i class="bi bi-shield-check me-1"></i> The server recalculates the total and checks date conflicts before confirmation.</p>
+            <button class="btn btn-accent w-100 mt-3" type="submit">Confirm booking <i class="bi bi-arrow-right ms-1"></i></button>
+          </aside>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+{% block extra_js %}
+<script>
+  const carSelect = document.getElementById('cars11');
+  const daysInput = document.getElementById('dayss');
+  const dateInput = document.getElementById('date');
+  const summaryCar = document.getElementById('summaryCar');
+  const dailyRate = document.getElementById('dailyRate');
+  const summaryDays = document.getElementById('summaryDays');
+  const totalRent = document.getElementById('totalRent');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+  function updateSummary() {
+    const option = carSelect.options[carSelect.selectedIndex];
+    const price = Number(option?.dataset.price || 0);
+    const days = Math.max(Number(daysInput.value || 1), 1);
+    summaryCar.textContent = option?.value || 'Select a vehicle';
+    dailyRate.textContent = `₹${price.toLocaleString('en-IN')}`;
+    summaryDays.textContent = days;
+    totalRent.textContent = `₹${(price * days).toLocaleString('en-IN')}`;
+  }
+  carSelect.addEventListener('change', updateSummary);
+  daysInput.addEventListener('input', updateSummary);
+  updateSummary();
+</script>
+{% endblock %}

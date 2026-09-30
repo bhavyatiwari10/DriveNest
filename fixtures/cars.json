@@ -1,0 +1,146 @@
+[
+  {
+    "model": "MyApp.car",
+    "pk": 1,
+    "fields": {
+      "car_id": 1,
+      "car_name": "Renault",
+      "car_desc": "Comfortable everyday rental for city and highway trips.",
+      "price": 2000,
+      "image": "car/images/renault.jpg",
+      "category": "SUV",
+      "seats": 7,
+      "transmission": "Manual",
+      "fuel_type": "Petrol",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 2,
+    "fields": {
+      "car_id": 2,
+      "car_name": "Alto 800",
+      "car_desc": "Compact, economical and easy to drive around town.",
+      "price": 700,
+      "image": "car/images/alto.webp",
+      "category": "Hatchback",
+      "seats": 5,
+      "transmission": "Manual",
+      "fuel_type": "Petrol",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 3,
+    "fields": {
+      "car_id": 3,
+      "car_name": "Innova Crysta",
+      "car_desc": "Spacious option for families and longer journeys.",
+      "price": 3500,
+      "image": "car/images/innova.jpeg",
+      "category": "SUV",
+      "seats": 7,
+      "transmission": "Automatic",
+      "fuel_type": "Diesel",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 4,
+    "fields": {
+      "car_id": 4,
+      "car_name": "Chevy Traverse",
+      "car_desc": "Roomy SUV built for comfortable group travel.",
+      "price": 3000,
+      "image": "car/images/taversa.jpg",
+      "category": "SUV",
+      "seats": 7,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 5,
+    "fields": {
+      "car_id": 5,
+      "car_name": "BMW X5",
+      "car_desc": "Premium SUV for a more refined driving experience.",
+      "price": 10000,
+      "image": "car/images/bmw.jpg",
+      "category": "Luxury",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Diesel",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 6,
+    "fields": {
+      "car_id": 6,
+      "car_name": "Honda City",
+      "car_desc": "Balanced sedan with comfort for everyday travel.",
+      "price": 2500,
+      "image": "car/images/honda.jpg",
+      "category": "Sedan",
+      "seats": 5,
+      "transmission": "Manual",
+      "fuel_type": "Petrol",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 7,
+    "fields": {
+      "car_id": 7,
+      "car_name": "Mercedes Benz",
+      "car_desc": "Luxury rental for occasions where comfort comes first.",
+      "price": 40000,
+      "image": "car/images/mercedes.jpg",
+      "category": "Luxury",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 8,
+    "fields": {
+      "car_id": 8,
+      "car_name": "Swift Dezire",
+      "car_desc": "Practical sedan for efficient daily rentals.",
+      "price": 1000,
+      "image": "car/images/swift.jpg",
+      "category": "Sedan",
+      "seats": 5,
+      "transmission": "Manual",
+      "fuel_type": "Petrol",
+      "is_available": true
+    }
+  },
+  {
+    "model": "MyApp.car",
+    "pk": 9,
+    "fields": {
+      "car_id": 9,
+      "car_name": "KIA",
+      "car_desc": "Modern, comfortable option for flexible road trips.",
+      "price": 800,
+      "image": "car/images/kia.webp",
+      "category": "SUV",
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Diesel",
+      "is_available": true
+    }
+  }
+]

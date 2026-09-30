@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign In{% endblock %}
+{% block body %}
+<section class="auth-section"><div class="container"><div class="auth-shell"><div class="auth-copy" style="background-image:url('{% static 'login.jpg' %}')"><div><span class="eyebrow text-white">WELCOME BACK</span><h1>Get back on the road.</h1><p>Sign in to browse the fleet and manage your bookings.</p></div></div><div class="auth-form"><span class="eyebrow">YOUR ACCOUNT</span><h2>Sign in</h2><p class="muted-copy">Use your DriveNest username and password.</p><form method="post" action="{% url 'signin' %}">{% csrf_token %}<div class="mb-3"><label for="loginusername">Username</label><input class="form-control" id="loginusername" name="loginusername" autocomplete="username" required></div><div class="mb-4"><label for="loginpassword">Password</label><input class="form-control" id="loginpassword" name="loginpassword" type="password" autocomplete="current-password" required></div><button class="btn btn-accent w-100" type="submit">Sign in <i class="bi bi-arrow-right ms-1"></i></button></form><p class="small text-secondary text-center mt-4 mb-0">New here? <a href="{% url 'register' %}">Create an account</a></p></div></div></div></section>
+{% endblock %}

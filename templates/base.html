@@ -1,0 +1,54 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DriveNest — a modern Django car rental platform.">
+  <title>{% block title %}DriveNest{% endblock %} | DriveNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
+  <div class="container">
+    <a class="navbar-brand brand-mark" href="{% url 'home' %}"><i class="bi bi-steering-wheel me-1"></i>Drive<span>Nest</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'vehicles' %}">Fleet</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'my_bookings' %}">Bookings</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-accent btn-sm px-3" href="{% url 'signout' %}">Log out</a></li>
+        {% else %}
+          <li class="nav-item ms-lg-2"><a class="btn btn-outline-light btn-sm px-3" href="{% url 'signin' %}">Sign in</a></li>
+          <li class="nav-item"><a class="btn btn-accent btn-sm px-3" href="{% url 'register' %}">Get started</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% include 'messages.html' %}
+<main>{% block body %}{% endblock %}</main>
+<footer class="site-footer">
+  <div class="container py-5">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-7"><div class="brand-mark mb-2"><i class="bi bi-steering-wheel me-1"></i>Drive<span>Nest</span></div><p class="footer-copy mb-0">A portfolio-ready Django rental platform with smart fleet discovery, secure booking logic and account-based trip management.</p></div>
+      <div class="col-md-5 text-md-end"><a href="{% url 'about' %}" class="footer-link">About</a><a href="{% url 'contact' %}" class="footer-link">Contact</a><a href="{% url 'vehicles' %}" class="footer-link">Fleet</a></div>
+    </div>
+    <hr class="footer-rule"><div class="d-flex justify-content-between flex-wrap gap-2 small text-secondary"><span>© 2026 DriveNest</span><span>Built with Django · Bootstrap</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>
